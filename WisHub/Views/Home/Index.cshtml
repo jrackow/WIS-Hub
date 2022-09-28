@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<div class="gridContainer">
+    <div class="gridItem">
+        <canvas id="line-chart" width="400" height="200"></canvas>
+    </div>
+    <div class="gridItem">
+        <canvas id="line-chart2" width="400" height="200"></canvas>
+    </div>
+      <div class="gridItem">
+        <canvas id="line-chart3" width="400" height="200"></canvas>
+    </div>
+      <div class="gridItem">
+        <canvas id="line-chart4" width="400" height="200"></canvas>
+    </div>
+</div>
+<script>
+    var label = ["@ViewBag.Data[4].Timestamp", "@ViewBag.Data[3].Timestamp", "@ViewBag.Data[2].Timestamp", "@ViewBag.Data[1].Timestamp", "@ViewBag.Data[0].Timestamp"];
+    
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                data: ["@ViewBag.Data[4].Temperature", "@ViewBag.Data[3].Temperature", "@ViewBag.Data[2].Temperature", "@ViewBag.Data[1].Temperature", "@ViewBag.Data[0].Temperature"],
+                label: "Temperatur",
+                borderColor: "#3e95cd",
+                fill: false
+            }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Temperatur'
+            },
+            scales: {
+                                yAxes: [{
+                                        display: true,
+                                        ticks: {
+                                            beginAtZero: true,
+                                            steps: 1,
+                                            stepValue: 1,
+                                            max: 40
+
+                                        }
+                                    }]
+                            },
+            
+            tooltips: {
+                callbacks: {
+                label: (tooltipItems, data) => {
+                    return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + ' °C';
+                }
+            },
+            }
+        }
+    });
+</script>
+
+<script>
+    var label = ["@ViewBag.Data[4].Timestamp", "@ViewBag.Data[3].Timestamp", "@ViewBag.Data[2].Timestamp", "@ViewBag.Data[1].Timestamp", "@ViewBag.Data[0].Timestamp"];
+    
+    new Chart(document.getElementById("line-chart2"), {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                data: ["@ViewBag.Data[4].Humidity", "@ViewBag.Data[3].Humidity", "@ViewBag.Data[2].Humidity", "@ViewBag.Data[1].Humidity", "@ViewBag.Data[0].Humidity"],
+                label: "Luftfeuchtigkeit",
+                borderColor: "#3e95cd",
+                fill: false
+            }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Luftfeuchtigkeit'
+            },
+            scales: {
+                                yAxes: [{
+                                        display: true,
+                                        ticks: {
+                                            beginAtZero: true,
+                                            steps: 1,
+                                            stepValue: 1,
+                                            max: 100
+                                        }
+                                    }]
+                            },
+            tooltips: {
+                callbacks: {
+                    label: (tooltipItems, data) => {
+                        return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + ' %';
+                    }
+                },
+            }
+
+        }
+    });
+</script>
+
+<script>
+    var label = ["@ViewBag.Data[4].Timestamp", "@ViewBag.Data[3].Timestamp", "@ViewBag.Data[2].Timestamp", "@ViewBag.Data[1].Timestamp", "@ViewBag.Data[0].Timestamp"];
+    
+    new Chart(document.getElementById("line-chart3"), {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                data: ["@ViewBag.Data[4].Moisture1", "@ViewBag.Data[3].Moisture1", "@ViewBag.Data[2].Moisture1", "@ViewBag.Data[1].Moisture1", "@ViewBag.Data[0].Moisture1"],
+                label: "Erster Sensor",
+                borderColor: "#3e95cd",
+                fill: false
+            },
+            {
+                data: ["@ViewBag.Data[4].Moisture2", "@ViewBag.Data[3].Moisture2", "@ViewBag.Data[2].Moisture2", "@ViewBag.Data[1].Moisture2", "@ViewBag.Data[0].Moisture2"],
+                label: "Zweiter Sensor",
+                borderColor: "#47FF6C",
+                fill: false
+            }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Bodenfeuchtigkeit',
+                },
+            scales: {
+                                yAxes: [{
+                                        display: true,
+                                        ticks: {
+                                            beginAtZero: true,
+                                            steps: 1,
+                                            stepValue: 1,
+                                            max: 100
+                                        }
+                                    }]
+                            },
+            
+            tooltips: {
+                callbacks: {
+                label: (tooltipItems, data) => {
+                    return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + ' %';
+                }
+            },
+            }
+        }
+    });
+</script>

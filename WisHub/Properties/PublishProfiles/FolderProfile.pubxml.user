@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\coding\WisHub\WisHub\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2022-09-22T16:17:59.8083154Z;True|2022-09-22T16:32:08.4998630+02:00;True|2022-09-22T16:30:39.2985544+02:00;</History>
+  </PropertyGroup>
+</Project>
